@@ -7,6 +7,22 @@ router.get('/new', (req, res) => {
   res.render('new')
 })
 
+// new post
+router.post('/new', (req, res) => {
+  const name = req.body.name
+  const UserId = req.user.id
+
+  // check input
+  if (!name) return res.render('new')
+
+  // create todo
+  Todo.create({ name, UserId })
+    .then(() => {
+      res.redirect('/')
+    })
+    .catch(err => console.log(err))
+})
+
 
 // read one
 router.get('/:id', (req, res) => {
