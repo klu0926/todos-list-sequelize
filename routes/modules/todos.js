@@ -37,6 +37,16 @@ router.get('/:id', (req, res) => {
 })
 
 // edit
+
 // delete
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+  const userId = req.user.id
+
+  return Todo.findByPk(id, { where: { UserId: userId } })
+    .then(todo => todo.destroy())
+    .then(() => res.redirect('/'))
+    .catch(err => console.log(err))
+})
 
 module.exports = router
