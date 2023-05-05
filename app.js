@@ -1,5 +1,5 @@
 // set env
-if(process.env.NODE_ENV !== 'production'){
+if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
@@ -10,6 +10,7 @@ const session = require('express-session')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
 const routes = require('./routes')
+const usePassport = require('./config/passport')
 
 // app
 const app = express()
@@ -28,10 +29,17 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
-// < passport here
+app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(flash())
-// < passport and flash handle here
+usePassport(app)
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
+  next()
+})
 
 // routes
 app.use(routes)
