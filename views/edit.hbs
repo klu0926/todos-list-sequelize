@@ -1,4 +1,7 @@
 <form action="/todos/{{ todo.id }}?_method=PUT" method="POST" class="d-inline">
+  <div class="d-flex justify-content-end">
+    <a class="btn btn-primary mb-2" href="/todos/{{todo.id}}">Back</a>
+  </div>
   <div class="input-group">
     <div class="input-group-text">
       <input type="checkbox" class="form-check-input mt-0" name="isDone" {{#if todo.isDone }} checked {{/if}}>

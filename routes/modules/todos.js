@@ -23,7 +23,6 @@ router.post('/new', (req, res) => {
     .catch(err => console.log(err))
 })
 
-
 // read one
 router.get('/:id', (req, res) => {
   const id = req.params.id
