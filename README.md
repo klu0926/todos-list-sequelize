@@ -6,7 +6,7 @@
 
 
 ## About - 介紹
-個使用Express跟MySQL做的TODO清單
+使用Express跟MySQL做的TODO清單
 
 
 ## Features - 功能
@@ -53,7 +53,7 @@ npx sequelize db:migrate
 ```
 npx sequelize db:seed:all
 ```
-8.製作 .env檔案，可以參考 .env.example
+8.製作 .env檔案可以參考 .env.example
 ```
 PORT=
 SESSION_SECRET=
