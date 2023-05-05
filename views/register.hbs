@@ -6,7 +6,9 @@
       <form action="/users/register" method="POST">
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
-          <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" value="{{ name }}">
+          <input type="text" id="name" name="name" class="form-control" placeholder="Max 10 characters" maxlength="10"
+            pattern="^[^\s].*[^\s]$" value="{{ name }}">
+          <small>No space at start / end</small>
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
@@ -15,13 +17,13 @@
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password"
-            value="{{ password }}">
+          <input type="password" id="password" name="password" class="form-control" placeholder="max 20 characters"
+            maxlength="20" value="{{ password }}">
         </div>
         <div class="mb-3">
           <label for="confirmPassword" class="form-label">Confirm Password</label>
           <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"
-            placeholder="Confirm Password" value="{{ confirmPassword }}">
+            placeholder="Confirm Password" maxlength="20" value="{{ confirmPassword }}">
         </div>
         <button type="submit" class="d-block w-100 mb-2 btn btn-primary">Register</button>
         <a href="/auth/facebook" class="d-block w-100 mb-2 btn btn-info">Facebook</a>
